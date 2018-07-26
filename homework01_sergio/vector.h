@@ -1,35 +1,30 @@
 class Vector {
 public:
 
-    Vector() {
-        this->x = 0;
-        this->y = 0;
+    Vector(int x, int y)
+        : mX(x)
+        , mY(y)
+    {}
+
+    int GetX() const {
+        return mX;
     }
 
-    Vector(int x, int y) {
-        this->x = x;
-        this->y = y;
+    int GetY() const {
+        return mY;
     }
 
-    int GetX() {
-        return this->x;
+    void Add(const Vector& newVector) {
+        mX += newVector.mX;
+        mY += newVector.mY;
     }
 
-    int GetY() {
-        return this->y;
-    }
-
-    void Add(Vector new_vector) {
-        this->x += new_vector.GetX();
-        this->y += new_vector.GetY();
-    }
-
-    bool operator==(Vector new_vector) {
-        return (this->GetX() == new_vector.GetX())
-               && (this->GetY() == new_vector.GetY());
+    bool operator==(Vector newVector) {
+        return (mX == newVector.mX)
+               && (mY == newVector.mY);
     }
 
 private:
-    int x;
-    int y;
+    int mX{0};
+    int mY{0};
 };
